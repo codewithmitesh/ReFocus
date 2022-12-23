@@ -1,0 +1,15 @@
+version: '2' # specify docker-compose version# Define the services/containers to be run
+services:
+  refocus: #name of the first service
+    build: refocus-frontend-2 # specify the directory of the Dockerfile
+    ports:
+      - "3000:3000" # specify port forewarding
+    container_name: refocus-container
+    restart: always
+
+  refocus-backend: #name of the second service
+    build: Server # specify the directory of the Dockerfile
+    ports:
+      - "8000:8000" #specify ports forewarding
+    container_name: back-container
+    restart: always

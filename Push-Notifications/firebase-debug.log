@@ -1,0 +1,27 @@
+[debug] [2022-03-13T14:34:04.948Z] ----------------------------------------------------------------------
+[debug] [2022-03-13T14:34:04.949Z] Command:       D:\Nodejs\node.exe C:\Users\Pratik\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-03-13T14:34:04.950Z] CLI Version:   10.2.2
+[debug] [2022-03-13T14:34:04.950Z] Platform:      win32
+[debug] [2022-03-13T14:34:04.950Z] Node Version:  v12.22.10
+[debug] [2022-03-13T14:34:04.950Z] Time:          Sun Mar 13 2022 20:04:04 GMT+0530 (India Standard Time)
+[debug] [2022-03-13T14:34:04.951Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-03-13T14:34:04.957Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-03-13T14:34:04.957Z] > authorizing via signed-in user (pratiklagaskar07@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Pratik\Desktop\Codes\SIH22\ReFocus
+
+[debug] [2022-03-13T17:29:27.899Z] Error: kill ENOSYS
+    at process.kill (internal/process/per_thread.js:199:13)
+    at process.listener (C:\Users\Pratik\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\signal-exit\index.js:95:15)
+    at process.emit (events.js:314:20)
+[error] 
+[error] Error: An unexpected error has occurred.

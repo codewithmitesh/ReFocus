@@ -1,0 +1,28 @@
+{
+  "name": "ReFocus",
+  "version": "1.0",
+  "description": "An extension that reminds you to take study breaks when you need them and tracks web activity",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "ReFocus",
+    "default_icon": "logo.png"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "icons": {
+    "128": "logo.png"
+  },
+  "permissions": [
+    "tabs",
+    "https://www.meet.google.com/*",
+    "http://localhost/*",
+    "activeTab",
+    "storage",
+    "webRequest",
+    "cookies",
+    "notifications",
+    "alarms"
+  ]
+}
