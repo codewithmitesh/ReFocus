@@ -1,0 +1,58 @@
+[
+	{
+		"name": "Overdue",
+		"items": [
+			{
+				"id": 1,
+				"priority": 0,
+				"title": "NAT Assignment",
+				"assignees": []
+			},
+			{
+				"id": 2,
+				"priority": 2,
+				"title": "Figma Design",
+				"assignees": []
+			}
+		]
+	},
+	{
+		"name": "In Progress",
+		"items": [
+			{
+				"id": 3,
+				"priority": 1,
+				"title": "Meeting with project guide",
+
+				"assignees": []
+			}
+		]
+	},
+
+	{
+		"name": "Completed",
+		"items": [
+			{
+				"id": 6,
+				"priority": 0,
+				"title": "UML diagram",
+
+				"assignees": []
+			},
+			{
+				"id": 7,
+				"priority": 1,
+				"title": "Write a blog",
+
+				"assignees": []
+			},
+			{
+				"id": 8,
+				"priority": 2,
+				"title": "Apply for SIH-2022",
+
+				"assignees": []
+			}
+		]
+	}
+]

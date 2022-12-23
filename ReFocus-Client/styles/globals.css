@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @layer base {
+	body {
+		@apply bg-gray-100;
+	}
+} */
+
+@layer components {
+	.bg-purple {
+		@apply bg-indigo-600;
+	}
+	.bg-cyan {
+		@apply bg-[#DBE8F4];
+	}
+}
