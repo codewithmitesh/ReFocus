@@ -12,7 +12,7 @@ import Iframe from 'react-iframe';
 
 const teacherSubscription = () => {
 	return (
-		<div className='bg-cyan w-full h-screen flex items-center justify-center'>
+		<div className='bg-cyan w-full h-full flex items-center justify-center'>
 			<div className='bg-purple w-12 h-72 border rounded-full flex flex-col items-center justify-center translate-x-6'>
 				<Link href='/teacherHome'>
 					<AiOutlineHome className='text-white text-3xl my-3 cursor-pointer font-bold' />
@@ -65,6 +65,10 @@ const teacherSubscription = () => {
 							/>
 						</div>
 					</form>
+				</div>
+				<div>
+					this is a div yaha pe saari infos aayegi
+					yaha se data leke home ko call karna hai and data bhejna hai simple
 				</div>
 			</div>
 		</div>

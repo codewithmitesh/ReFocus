@@ -26,14 +26,14 @@ exports.sendMeetData = async (req, res, next) => {
         } = req.body
 
         console.log(req.user);
-        console.log(meet_id, attendence_code, active_time, popup_1, popup_2, popup_3,req.user.email);
+        console.log(meet_id, attendence_code, active_time, popup_1, popup_2, popup_3, req.user.email);
         //calling function to create model or get model
         const Meet = await meetModel.getModel(meet_id);
         // console.log(Meet);
         const insertMeetData = new Meet({
             meet_id,
             attendence_code,
-            email:req.user.email,
+            email: req.user.email,
             active_time,
             popup_1,
             popup_2,

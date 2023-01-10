@@ -11,7 +11,7 @@ exports.registerUser = (req, res) => {
         category
     } = req.body
     // validation each field should be filled
-
+    console.log(JSON.stringify(req.body));
     if (!name || !email || !password || !category) {
         return res.status(400).json({
             msg: 'Please enter all fields'
@@ -49,18 +49,22 @@ exports.registerUser = (req, res) => {
                     expires: new Date(Date.now() + 900000),
                     httpOnly: true
                 });
-                res.send("new user Added")
-
-                // console.log("cookie is set" + cookie);
-
-                newUser.save().then(
-                    console.log(newUser)
-                ).catch(err => console.log(err))
-
+                res.status(200).json({
+                    success: true,
+                    message: "new User Added Successfully"
+                });
             });
+
+            // console.log("cookie is set" + cookie);
+
+            newUser.save().then(
+                console.log(newUser)
+            ).catch(err => console.log(err))
+
         });
-    }).catch(err => console.log(err))
+    });
 }
+
 
 exports.loginUser = async (req, res, next) => {
 
@@ -96,24 +100,34 @@ exports.loginUser = async (req, res, next) => {
         });
         // console.log(`this is the cookie ${req.cookies.jwt}`)
         if (isMatch) {
-            // res.send({
-            //     msg: "User is logged in"
+            // res.json({
+            //     msg: "User is logged in",
+
             // })
-            //here can also save the user info and be stored in req.user
-            // if(category==="student"){
-                res.redirect("/dashboard")
+            console.log("this is user info:- " + useremail.name + useremail.email + useremail.category);
+            // here can also save the user info and be stored in req.user
+            if (useremail.category === "Student") {
+                // res.redirect("/dashboard")
                 // res.redirect("http://localhost:3000/studentHome")
-            // }else{
+                res.json({
+                    msg: "Student Loggin sucessfully logged in",
+                    category: "Student"
+                })
+            } else {
+                res.json({
+                    msg: "Teacher Loggin sucessfully logged in",
+                    category: "Teacher"
+                })
                 // res.redirect("http://localhost:3000/teacherHome")
-            // }
+            }
             // res.send("user Logged in Successfully"); 
         } else {
-            res.send({
+            res.status(401).send({
                 msg: "Invalid Password"
             })
         }
     } catch (err) {
-        console.log(err);
+        console.log(err.message);
     }
 }
 

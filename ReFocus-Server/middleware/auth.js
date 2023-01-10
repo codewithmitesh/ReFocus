@@ -10,7 +10,7 @@ const auth = async (req, res, next) => {
         // var decodedData = decodeURIComponent(temp);
         // var jsonObject = JSON.parse(temp);
         // console.log();
- 
+
         const token = req.cookies.jwt;
         const verifyUser = jwt.verify(token, process.env.JWT_SECRET);
         console.log(verifyUser);

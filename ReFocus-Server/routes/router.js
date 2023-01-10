@@ -51,6 +51,7 @@ route.get('/user/login', services.loginRoute);
 
 route.get('/user/register', services.registerRoute);
 
+// route.post('/dashboard', auth, userController.userDashboard);
 route.get('/dashboard', auth, userController.userDashboard);
 
 
@@ -71,7 +72,7 @@ route.get('/logout', auth, userController.logoutUsers);
  * @method Post /user/data
  */
 //add auth as middle ware
-route.post('/meet/senddata', auth,meetController.sendMeetData);
+route.post('/meet/senddata', auth, meetController.sendMeetData);
 
 /**
  * @description Get Meetdata
@@ -98,8 +99,8 @@ module.exports = route;
 
 
 
-// 12-8 User profile page and 
+// 12-8 User profile page and
 // Upload post and Route and Image upload routes
-// Authorization and User profie data 
-// what post he has uploaded and images he has uploaded 
+// Authorization and User profie data
+// what post he has uploaded and images he has uploaded
 // Deal with images upload image muktiple images stored in username folder with design name folder and inthat multiple design images 
