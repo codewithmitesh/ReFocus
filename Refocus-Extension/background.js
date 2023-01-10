@@ -458,7 +458,7 @@ studyTimer.start()
 
 // define meetId, code, popup1 and popup2
 var meetId = 'newTestMeet'
-var attendence_code = 'pratik'
+var attendence_code = 'Mitesh Tank'
 var popup_1 = 'true'
 var popup_2 = 'false'
 
@@ -486,16 +486,17 @@ localStorage.setItem('meetdata', JSON.stringify(meetdata))
 /**
  * Adding Trigger to Submit button to fetch all data form local storage and send it to Server 
  */
-    // Getting the code form input and storing it in local storage
-    // let attendence_code_input = submitData.value;
-    // console.log(attendence_code_input);
-    // attendence_code = attendence_code_input;
-    /**
-     * As soon as user click on submit button the whole 
-     */
-    const Tempdata = JSON.parse(localStorage.getItem('meetdata'));
-    async function postData(url, data) {
-        // Default options are marked with *
+// Getting the code form input and storing it in local storage
+// let attendence_code_input = submitData.value;
+// console.log(attendence_code_input);
+// attendence_code = attendence_code_input;
+/**
+ * As soon as user click on submit button the whole 
+ */
+const Tempdata = JSON.parse(localStorage.getItem('meetdata'));
+async function postData(url, data) {
+    // Default options are marked with *
+    try {
         const response = await fetch(url, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
@@ -511,14 +512,17 @@ localStorage.setItem('meetdata', JSON.stringify(meetdata))
             body: JSON.stringify(data) // body data type must match "Content-Type" header
             // body: JSON.parse(data) // body data type must match "Content-Type" header
         });
-        return response.json(); // parses JSON response into native JavaScript objects
-    }
-    postData('http://localhost:8000/meet/senddata',
-            Tempdata
-        )
-        .then((data) => {
-            console.log(data.json()); // JSON data parsed by `data.json()` call
-        }).catch((err) => {
-            console.log(err.message); //
-        });
+        return response.json();
+    } catch (err) { console.log(err.message) }// parses JSON response into native JavaScript objects
+}
+
+
+postData('http://localhost:8000/meet/senddata',
+    Tempdata
+)
+    .then((data) => {
+        console.log(data.json()); // JSON data parsed by `data.json()` call
+    }).catch((err) => {
+        console.log(err.message); //
+    });
 

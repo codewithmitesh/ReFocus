@@ -12,10 +12,72 @@ import { HiMenuAlt2 } from 'react-icons/hi';
 import { FaGraduationCap } from 'react-icons/fa';
 import Link from 'next/link';
 import AttendanceList from '../components/AttendanceList';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+
 
 const teacherHome = () => {
+
+	const [meetData, setMeetData] = useState('')
+	const [data, setData] = useState([])
+	const responseData = []
+	var res = []
+	// // this is already working
+	const handleMeetSubmit = async (e) => {
+		e.preventDefault();
+		try {
+			// console.log(meetData)
+			console.log("query fired" + meetData)
+			const response = await axios.post('http://localhost:8000/meet/getdata',
+				JSON.stringify({ meet: meetData }),
+				{
+					headers: { 'Content-Type': 'application/json' },
+					withCredentials: true
+				}
+			);
+			console.log("Runed")
+
+			// responseData = response.data;
+			console.log(response.data)
+			function json2array(json) {
+				var result = [];
+				var keys = Object.keys(json);
+				keys.forEach(function (key) {
+					result.push(json[key]);
+				});
+				return result;
+			}
+			res = json2array(response.data)
+
+			console.log(res)
+			// setData([...new Set([...data, ...response.data])])
+			setData([...new Set([...res])])
+			// setData(res)
+			typeof data === 'object'
+			console.log(data)
+			// const cate = response.data.
+			// console.log(JSON.stringify(response?.data));
+			// console.log(JSON.stringify(response));
+			// console.log(response.data);
+
+		} catch (err) {
+			if (!err?.response) {
+				console.log('No Server Response');
+			} else if (err.response?.status === 400) {
+				console.log('Missing Username or Password');
+			} else if (err.response?.status === 401) {
+				console.log('Unauthorized');
+			} else {
+				console.log('Login Failed');
+			}
+			// errRef.current.focus();
+		}
+	}
+	console.log("THis is res:- " + res);
+
 	return (
-		<div className='bg-cyan w-full h-screen flex items-center justify-center'>
+		<div className='bg-cyan w-full h-[200vh] flex items-center justify-center'>
 			<div className='bg-purple w-12 h-72 border rounded-full flex flex-col items-center justify-center translate-x-6'>
 				<Link href='/teacherHome'>
 					<AiOutlineHome className='text-white text-3xl my-3 cursor-pointer font-bold' />
@@ -23,7 +85,7 @@ const teacherHome = () => {
 				<Link href='/teacherCalendar'>
 					<AiOutlineCalendar className='text-white text-3xl my-3 cursor-pointer' />
 				</Link>
-				<Link href='/teacherSubscription'>
+				<Link href='/teacherSubscription' >
 					<AiOutlinePlusCircle className='text-white text-3xl my-3 cursor-pointer' />
 				</Link>
 				<Link href='/teacherAnnouncements'>
@@ -33,6 +95,7 @@ const teacherHome = () => {
 					<BiLogOut className='text-white text-3xl my-3 cursor-pointer' />
 				</Link>
 			</div>
+			{/** removed h-3/4 from here */}
 			<div className='h-3/4 w-3/4 bg-white shadow-xl border rounded-lg flex flex-col pb-5 '>
 				<div className='flex flex-row justify-between h-min'>
 					<div className='ml-20 mt-8  h-min'>
@@ -102,16 +165,44 @@ const teacherHome = () => {
 						</h1>
 					</div>
 				</div>
+				<div className='flex items-center justify-center mt-10'>
+					<form onSubmit={handleMeetSubmit}>
+						<input
+							type='text'
+							name='meetcode'
+							onChange={(e) => setMeetData(e.target.value)}
+							placeholder='Enter meet code'
+							className=' border-2 border-b-slate-400 text-center rounded-md w-64'
+						/>
+						<div className='flex items-center justify-center'>
+							<input
+								type='submit'
+								value='Submit'
+								className='bg-purple text-white text-2xl px-4 rounded-full mt-4'
+							/>
+						</div>
+					</form>
+				</div>
+				{/* {data.map((eachAttendence) => {
+					// <AttendanceList />
+					<h1>THis is data</h1>
+					// console.log(eachAttendence);
+				})} */}
 				<div className='bg-white shadow-md  w-5/6 h-3/5 mt-5 mx-auto flex flex-col overflow-auto'>
-					<h1 className='font-bold ml-5 mt-2'>Recent Activities</h1>
+					<h1 className='font-bold ml-10 mt-2'>Recent Activities</h1>
+
+					{data.map((eachAttendence) => {
+						return <AttendanceList attendence={eachAttendence} />
+					})}
+					{/* <AttendanceList />
+					
 					<AttendanceList />
 					<AttendanceList />
 					<AttendanceList />
-					<AttendanceList />
-					<AttendanceList />
+					<AttendanceList /> */}
 				</div>
 			</div>
-		</div>
+		</div >
 	);
 };
 
